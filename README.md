@@ -8,3 +8,5 @@ Bot that will upload a sticker back to imgur and send the link to the user
 - A valid set of imgur API credentials
 # Usage
 - Simpy run stickerretrievalbot.py after filling it with the missing credentials
+# Current Deployment
+- Bot is currently deployed at [@StickerRetrieverBot](http://t.me/StickerRetrieverBot)
