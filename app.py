@@ -6,12 +6,8 @@ import os
 from PIL import Image, features
 from imgurpython import ImgurClient
 
-imgur_client_id = 'IMGUR_CLIENTID'
-imgur_client_secret = 'IMGUR_SECRET'
-telegram_botid = 'TELEGRAM_BOTID'
-
-client = ImgurClient(imgur_client_id, imgur_client_secret)
-bot = telepot.Bot(telegram_botid)
+client = ImgurClient(os.environ['imgur_client_id'], os.environ['imgur_client_secret'])
+bot = telepot.Bot(os.environ['telegram_apikey'])
 
 def handle(msg):
     pprint.pprint(msg)
