@@ -13,10 +13,11 @@ def handle(msg):
     pprint.pprint(msg)
     if( 'sticker' in msg ):
         path = os.path.dirname(__file__)
-        bot.download_file(msg['sticker']['file_id'], os.path.join(path,'temp.webp'))
-        img = Image.open(os.path.join(path,'temp.webp'))
-        img.save(os.path.join(path,'temp.png'))
-        image = client.upload_from_path(os.path.join(path,'temp.png'), anon=True)
+        filename = 'temp.webp'
+        bot.download_file(msg['sticker']['file_id'], os.path.join(path,filename))
+        img = Image.open('temp.webp')
+        img.save('temp.png')
+        image = client.upload_from_path('temp.png', anon=True)
         bot.sendMessage(msg['chat']['id'], image['link'])
 
 
