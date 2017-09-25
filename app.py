@@ -16,20 +16,28 @@ def init():
     telegram_botid = os.environ['TELEGRAM_BOTID']
     client = ImgurClient(imgur_client_id, imgur_client_secret)
     bot = telepot.Bot(telegram_botid)
+    pprint.pprint(bot.getMe())
+
+def convert_to_png(file):
+    img = Image.open(file)
+    new_file = os.path.basename(file) + '.png'
+    img.save(new_file)
+    return new_file
+
+def upload_to_imgur(file):
+    return client.upload_from_path(file, anon=True)
 
 def handle(msg):
     pprint.pprint(msg)
     if 'sticker' in msg:
         path = os.path.dirname(__file__)
-        filename = 'temp.webp'
-        bot.download_file(msg['sticker']['file_id'], os.path.join(path,filename))
-        img = Image.open('temp.webp')
-        img.save('temp.png')
-        image = client.upload_from_path('temp.png', anon=True)
+        bot.download_file(msg['sticker']['file_id'], os.path.join(path,'temp.webp'))
+        file = convert_to_png(filename)
+        image = upload_to_imgur(file)
         bot.sendMessage(msg['chat']['id'], image['link'])
 
 def main():
-    pprint.pprint(bot.getMe())
+    init()
     telepot.loop.MessageLoop(bot,handle).run_as_thread()
     while 1:
         time.sleep(10)
