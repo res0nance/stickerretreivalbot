@@ -1,4 +1,4 @@
 import app
 
 def test_init():
-    app.Init()
+    app.init()
