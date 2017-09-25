@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/res0nance/stickerretreivalbot.svg?branch=master)](https://travis-ci.org/res0nance/stickerretreivalbot)
+[![Coverage Status](https://coveralls.io/repos/github/res0nance/stickerretreivalbot/badge.svg?branch=master)](https://coveralls.io/github/res0nance/stickerretreivalbot?branch=master)
 # Sticker Retrieval Bot
 Bot that will upload a sticker back to imgur and send the link to the user
 # Requirements
